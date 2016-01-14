@@ -39,6 +39,10 @@ angular.module('starter.controllers', [])
     // Setting "note" information to local storage
     localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
 
+    $scope.closeNote();
+
+    $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     // $timeout(function() {
