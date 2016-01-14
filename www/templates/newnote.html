@@ -1,0 +1,26 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">New Note</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeNote()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+  <!-- Creating two children of note: title & input, "note" is passsed through saveNote function to controller -->
+    <form ng-submit="saveNote(note)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label" ></span>
+          <input type="text" placeholder="Title" ng-model="note.title">
+        </label>
+        <label class="item item-input" id="item-input">
+          <span class="input-label"></span>
+          <input type="text" placeholder="Enter your note" ng-model="note.input">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Save Note</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
