@@ -50,14 +50,15 @@ angular.module('starter.controllers', ["factory"])
 
   $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
 
-
-
   $scope.deleteNote = function(note){
-  //target object
+    //target object
+    console.log("delete");
     delete $scope.localHistory[note.name]
     //this is where we are deleting the selected note from the localHistory object
-    factory.setNotes($scope.localHistory);
-  //Where we take the object where we just manipulated and store it in the factory
+    // console.log("$scope.localHistory1", $scope.localHistory);
+    factory.deleteNotes($scope.localHistory);
+    // console.log("$scope.localHistory2", $scope.localHistory);
+    //Where we take the object where we just manipulated and store it in the factory
     $scope.localHistory = factory.getNotes();
     //this is the updated localHistory object
 
