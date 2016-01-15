@@ -1,6 +1,8 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["factory"])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $state) {
+
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $state, factory) {
+
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -31,55 +33,36 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.saveNote = function(note) {
-    console.log('note', note);
-    // Getting the history in local storage, if nothing exists, we create an empty array
-    var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
 
-    noteHistory[note.title] = { "name": note.title,  "input" : note.input }
-    // Pushes "note" information from partial into array
-    //noteHistory.push(note);
-    // Setting "note" information to local storage
-    localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
-
-    $scope.closeNote();
-
-    $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
-    console.log($scope.localHistory)
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    // $timeout(function() {
-    //   $scope.closeNote();
-    // }, 1000);
+    factory.setNotes(note);
+    // THINK I NEED A PROMISE HERE THAT WILL CLOSE MODAL AFTER I GET THE UPDATED NOTES
+    $scope.localHistory = factory.getNotes();
+    $scope.modal.hide();
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $http, $stateParams, $state) {
 
-  $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
-  console.log("localHistory", $scope.localHistory);
-  console.log($stateParams.playlistId);
-  // $scope.getNote = function(){
-  //   console.log('---->', $stateParams.playlistId);
-    // console.log("thing", thing);
-    // var thisNote = thing;
 
-    $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
-  // }
 
-  // $scope.playlists = [
 
-  //   // { title: 'Reggae', id: 1 },
-  //   // { title: 'Chill', id: 2 },
-  //   // { title: 'Dubstep', id: 3 },
-  //   // { title: 'Indie', id: 4 },
-  //   // { title: 'Rap', id: 5 },
-  //   // { title: 'Cowbell', id: 6 }
-  // ];
+
+.controller('PlaylistsCtrl', function($scope, $http, $stateParams, $state, factory) {
+
+
+  $scope.localHistory = factory.getNotes();
+  console.log($scope.localHistory);
+
+  $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
+
 })
 
+
 .controller('PlaylistCtrl', function($scope, $stateParams, $state) {
-  console.log("thing", thing);
+
 });
+
+
+
 
 
 
