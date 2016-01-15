@@ -3,21 +3,22 @@ angular.module("factory", [])
 
     var localHistory;
 
-    localHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    localHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
     console.log("localHistory in factory", localHistory);
 
 
     return {
 
-      getNotes : function() {
+      getNotes: function() {
         return localHistory;
       },
 
-      setNotes : function(addedNote) {
+      setNotes: function(addedNote) {
 
         // NEED TO TURN THIS BACK IN TO A STRING TO PUSH BACK TO LOCAL STORAGE ????
         console.log("addedNote in factory", addedNote);
-        localHistory = addedNote;
+        localHistory.push(addedNote);
+        localStorage.setItem("searchHistory", JSON.stringify(localHistory));
         console.log("updated localHistory in factory after note is added", localHistory);
       }
 

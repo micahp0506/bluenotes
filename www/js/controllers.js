@@ -31,6 +31,7 @@ angular.module('starter.controllers', ["factory"])
 
   // Perform the login action when the user submits the login form
   $scope.saveNote = function(note) {
+
     factory.setNotes(note);
 
     // THINK I NEED A PROMISE HERE THAT WILL CLOSE MODAL AFTER I GET THE UPDATED NOTES
@@ -45,13 +46,13 @@ angular.module('starter.controllers', ["factory"])
 
 
 
-    console.log('note', note);
-    // Getting the history in local storage, if nothing exists, we create an empty array
-    var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-    // Pushes "note" information from partial into array
-    noteHistory.push(note);
-    // Setting "note" information to local storage
-    localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
+    // console.log('note', note);
+    // // Getting the history in local storage, if nothing exists, we create an empty array
+    // var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    // // Pushes "note" information from partial into array
+    // noteHistory.push(note);
+    // // Setting "note" information to local storage
+    // localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
 
     // $scope.closeNote();
 
@@ -88,4 +89,12 @@ angular.module('starter.controllers', ["factory"])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+
+
+
 });
+
+
+
+
+
