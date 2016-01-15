@@ -10,15 +10,15 @@
   <!-- ng-submit submits everything that is in this form tag,  -->
     <form>
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label" ></span>
+        <label class="item item-input borderTopBottom">
+          <!-- <span class="input-label" ></span> -->
           <input type="text" placeholder="Title" ng-model="note.title">
         </label>
-        <label class="item item-input" id="item-input">
-          <span class="input-label"></span>
-          <input type="text" placeholder="Enter your note" ng-model="note.input">
+        <label class="item item-input">
+          <!-- <span class="input-label"></span> -->
+          <input type="text" placeholder="Enter your note" ng-model="note.input" id="item-input" class="noteWords">
         </label>
-        <label class="item">
+        <label class="item borderTopBottom">
           <button class="button button-block button-positive" ng-click="saveNote(note); note.title = ''; note.input=''">Save Note</button>
         </label>
       </div>

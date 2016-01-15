@@ -2,3 +2,26 @@
 #item-input {
   height: 150px;
 }
+
+.borderTopBottom {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.borderBottom {
+  border-bottom: 1px solid black;
+}
+
+.noteContentBox {
+ border: 1px solid black;
+ margin: 20px;
+ padding: 20px;
+}
+
+.noteWords {
+  border: 1px solid black !important;
+  margin: 20px;
+  padding: 20px;
+  width: 50px;
+  height: 400px;
+}
