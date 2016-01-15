@@ -54,13 +54,24 @@ angular.module('starter.controllers', ["factory"])
 
   $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
 
+  $scope.deleteNote = function(note){
+    console.log("note", note);
+    console.log("localHistory", $scope.localHistory);
+  //target object
+  var noteIndex = $scope.localHistory.indexOf(note);
+  console.log("noteIndex", noteIndex);
+  //target index aka place of item in array
+  if(noteIndex >=0)
+  $scope.localHistory.remove(noteIndex, 1);
+//remove the item targeted in the array.  The 1 is to target only one item not the location of the item.
+  }
+
 })
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $state) {
 
 });
-
 
 
 

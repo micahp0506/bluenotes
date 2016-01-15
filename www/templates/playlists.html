@@ -1,12 +1,15 @@
 <ion-view view-title="BlueNotes">
   <ion-content>
-    <ion-list>
-
+    <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="thing in localHistory" href="#/app/playlists/{{thing.name}}">
         {{thing.name}}
 
+           <ion-delete-button ng-click="deleteNote(this.note)"class="ion-minus-circled"></ion-delete-button>
       </ion-item>
     </ion-list>
+      <ion-toggle ng-model="shouldShowDelete" >
+      Delete
+      </ion-toggle>
   </ion-content>
 </ion-view>
 
