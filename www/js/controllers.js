@@ -73,7 +73,17 @@ angular.module('starter.controllers', ["factory"])
   $scope.localHistory = factory.getNotes();
   //console.log("returned note list in the PlaylistsCtrl in controllers", localHistory);
 
-
+//   $scope.deleteNote = function(note){
+//     console.log("note", note);
+//     console.log("localHistory", $scope.localHistory);
+//   //target object
+//   var noteIndex = $scope.localHistory.indexOf(note);
+//   console.log("noteIndex", noteIndex);
+//   //target index aka place of item in array
+// if(noteIndex >=0)
+//   $scope.localHistory.remove(noteIndex, 1);
+// //remove the item targeted in the array.  The 1 is to target only one item not the location of the item.
+//   }
 
 
   // $scope.playlists = [
