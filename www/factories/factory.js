@@ -15,7 +15,7 @@ angular.module("factory", [])
 
       setNotes: function(note) {
 
-        localHistory[note.title] = { "name": note.title,  "input" : note.input }
+        localHistory[note.title] = { "name": note.title,  "input" : note.input };
 
         localStorage.setItem('searchHistory', JSON.stringify(localHistory));
 
