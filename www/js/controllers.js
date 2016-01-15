@@ -55,6 +55,9 @@ angular.module('starter.controllers', [])
 
   $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
   //console.log("localHistory", localHistory);
+  $scope.getNote = function(thing){
+    console.log("thing", thing);
+  }
 
   // $scope.playlists = [
 
@@ -69,3 +72,8 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+
+
+
+
