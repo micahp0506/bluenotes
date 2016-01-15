@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -33,16 +33,18 @@ angular.module('starter.controllers', [])
   $scope.saveNote = function(note) {
     console.log('note', note);
     // Getting the history in local storage, if nothing exists, we create an empty array
-    var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
+
+    noteHistory[note.title] = { "name": note.title,  "input" : note.input }
     // Pushes "note" information from partial into array
-    noteHistory.push(note);
+    //noteHistory.push(note);
     // Setting "note" information to local storage
     localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
 
     $scope.closeNote();
 
     $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
-
+    console.log($scope.localHistory)
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     // $timeout(function() {
@@ -51,13 +53,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, $http, $stateParams, $state) {
 
   $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
-  //console.log("localHistory", localHistory);
-  $scope.getNote = function(thing){
-    console.log("thing", thing);
-  }
+  console.log("localHistory", $scope.localHistory);
+  console.log($stateParams.playlistId);
+  // $scope.getNote = function(){
+  //   console.log('---->', $stateParams.playlistId);
+    // console.log("thing", thing);
+    // var thisNote = thing;
+
+    $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
+  // }
 
   // $scope.playlists = [
 
@@ -70,7 +77,8 @@ angular.module('starter.controllers', [])
   // ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl', function($scope, $stateParams, $state) {
+  console.log("thing", thing);
 });
 
 

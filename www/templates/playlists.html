@@ -1,8 +1,8 @@
 <ion-view view-title="BlueNotes">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="thing in localHistory" ng-click="getNote('{{thing}}')" href="#/app/playlists/{{thing.title}}">
-        {{thing.title}}
+      <ion-item ng-repeat="thing in localHistory" href="#/app/playlists/{{thing.name}}">
+        {{thing.name}}
       </ion-item>
     </ion-list>
   </ion-content>
