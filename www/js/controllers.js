@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["factory"])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, factory) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -31,6 +31,20 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.saveNote = function(note) {
+    factory.setNotes(note);
+
+    // THINK I NEED A PROMISE HERE THAT WILL CLOSE MODAL AFTER I GET THE UPDATED NOTES
+    $scope.localHistory = factory.getNotes();
+    $scope.modal.hide();
+
+
+
+
+
+
+
+
+
     console.log('note', note);
     // Getting the history in local storage, if nothing exists, we create an empty array
     var noteHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
@@ -39,9 +53,9 @@ angular.module('starter.controllers', [])
     // Setting "note" information to local storage
     localStorage.setItem('searchHistory', JSON.stringify(noteHistory));
 
-    $scope.closeNote();
+    // $scope.closeNote();
 
-    $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    // $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
@@ -51,10 +65,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, factory) {
 
-  $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
+  // $scope.localHistory = JSON.parse(localStorage.getItem("searchHistory"));
   //console.log("localHistory", localHistory);
+
+  $scope.localHistory = factory.getNotes();
+  //console.log("returned note list in the PlaylistsCtrl in controllers", localHistory);
+
+
+
 
   // $scope.playlists = [
 
