@@ -50,29 +50,33 @@ angular.module('starter.controllers', ["factory"])
 
   $scope.noteToView = $scope.localHistory[$stateParams.playlistId];
 
-  $scope.deleteNote = function(){
-    // console.log("thing", thing);
-    delete $scope.localHistory[$stateParams.playlistId];
-    // console.log("localHistory", $scope.noteToView);
+
+
+  $scope.deleteNote = function(note){
   //target object
-  // var noteIndex = $scope.localHistory.indexOf(note);
-  // console.log("noteIndex", noteIndex);
-  //target index aka place of item in array
-  // if(noteIndex >=0)
-  // thing.remove();
-  // $scope.localHistory.remove(thing);
-//remove the item targeted in the array.  The 1 is to target only one item not the location of the item.
+    delete $scope.localHistory[note.name]
+    //this is where we are deleting the selected note from the localHistory object
+    factory.setNotes($scope.localHistory);
+  //Where we take the object where we just manipulated and store it in the factory
+    $scope.localHistory = factory.getNotes();
+    //this is the updated localHistory object
+
   }
-
 })
-
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $state) {
 
 });
 
 
-
+// You are using localStorage as an array, while it isn't. It has default functions to remove an item:
+// removeItem: function(key){
+//     $window.localStorage.removeItem(key);
+// }
+// If you want to remove by index, you have to get the item first:
+// removeByIndex: function (index) {
+//     $window.localStorage.removeItem($window.localStorage.key(index));
+// }
 
 
 
