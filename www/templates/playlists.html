@@ -3,7 +3,7 @@
     <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="note in localHistory" href="#/app/playlists/{{playlist.id}}">
         {{note.title}}
-           <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+           <ion-delete-button ng-click="deleteNote(this.note)"class="ion-minus-circled"></ion-delete-button>
       </ion-item>
     </ion-list>
       <ion-toggle ng-model="shouldShowDelete" >
