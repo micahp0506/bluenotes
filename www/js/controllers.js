@@ -42,10 +42,6 @@ angular.module('starter.controllers', ["factory"])
 })
 
 
-
-
-
-
 .controller('PlaylistsCtrl', function($scope, $http, $stateParams, $state, factory) {
 
 
