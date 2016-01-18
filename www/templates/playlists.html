@@ -1,7 +1,15 @@
 <ion-view view-title="BlueNotes">
+
+   <div class="bar has-header item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="searchText">
+    </label>
+  </div>
+
   <ion-content>
     <ion-list show-delete="shouldShowDelete">
-      <ion-item ng-repeat="thing in localHistory" href="#/app/playlists/{{thing.name}}">
+      <ion-item ng-repeat="thing in localHistory | toArray | filter: searchText track by $index" href="#/app/playlists/{{thing.name}}">
         {{thing.name}}
            <ion-delete-button ng-click="deleteNote(thing)"class="ion-minus-circled"></ion-delete-button>
       </ion-item>
@@ -9,8 +17,12 @@
       <ion-toggle ng-model="shouldShowDelete" >
       Delete
       </ion-toggle>
+
+  <ion-item menu-close href="#/app/search">
+
+ </ion-item>
+
   </ion-content>
 </ion-view>
-
 
 

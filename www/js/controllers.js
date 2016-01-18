@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ["factory"])
+angular.module('starter.controllers', ["factory", 'angular-toArrayFilter'])
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $state, factory) {
@@ -44,7 +44,7 @@ angular.module('starter.controllers', ["factory"])
 
 .controller('PlaylistsCtrl', function($scope, $http, $stateParams, $state, factory) {
 
-
+  // $scope.searchText = "";
   $scope.localHistory = factory.getNotes();
   console.log($scope.localHistory);
 
@@ -59,6 +59,8 @@ angular.module('starter.controllers', ["factory"])
   //Where we take the object where we just manipulated and store it in the factory
     $scope.localHistory = factory.getNotes();
     //this is the updated localHistory object
+
+
   }
 })
 
